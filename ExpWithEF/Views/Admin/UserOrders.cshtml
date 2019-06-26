@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Order>
+
+<div class="bg-primary panel-body"><h3>Orders</h3></div>
+<table class="table table-bordered table-condensed table-striped">
+    <tr><th>Order ID</th><th>User ID</th><th>Name</th><th>Phone</th><th>Address</th><th>Car ID</th></tr>
+    @if (Model.Count() == 0)
+    {
+        <tr><td colspan="6" class="text-center">No orders</td></tr>
+    }
+    else
+    {
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.UserId</td>
+                <td>@order.UserName</td>
+                <td>@order.Phone</td>
+                <td>@order.Address</td>
+                <td>@order.Car.Id</td>
+                <td>
+                    <form asp-action="DeleteOrder" asp-route-id="@order.OrderId" method="post">
+                        <a class="btn btn-warning" asp-route-id="@order.OrderId" asp-action="EditOrder">Edit</a>
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    }
+</table>
+<a class="btn btn-danger" asp-action="Index">Cancel</a>

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Order>
+<div class="panel-body bg-primary"><h3>All Orders</h3></div>
+<table class="table table-bordered table-condensed table-striped">
+    <tr><th>Order Id</th><th>Urser Id</th><th>Name</th><th>Phone</th><th>Address</th><th>Car Id</th></tr>
+    @foreach(var order in Model)
+    {
+        <tr>
+            <td>@order.OrderId</td>
+            <td>@order.UserId</td>
+            <td>@order.UserName</td>
+            <td>@order.Phone</td>
+            <td>@order.Address</td>
+            <td>@order.Car.Id</td>
+        </tr>
+    }
+</table>
+<a asp-action="Index" class="btn btn-primary">Cars</a>
+<a asp-action="Index" asp-controller="Admin" class="btn btn-primary">Users</a>

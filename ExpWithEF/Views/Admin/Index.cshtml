@@ -1,0 +1,31 @@
+﻿@model IEnumerable<User>
+
+<div class="bg-primary panel-body"><h3>Users</h3></div>
+<table class="table table-bordered table-condensed table-striped">
+    <tr><th>ID</th><th>Nickname</th><th>Email</th></tr>
+    @if (Model.Count() == 0)
+    {
+        <tr><td colspan="3" class="text-center">No Users Accounts</td></tr>
+    }
+    else
+    {
+        foreach (User user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>
+                    <form asp-action="Delete" method="post" asp-route-id="@user.Id">
+                        <a class="btn btn-primary" asp-route-id="@user.Id" asp-action="UserOrders">Orders</a>
+                        <a class="btn btn-warning" asp-route-id="@user.Id" asp-controller="Roles" asp-action="Edit">Access rights</a>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+
+        }
+    }
+</table>
+<a class="btn btn-primary" asp-controller="Home" asp-action="Index">Cars</a>
+<a class="btn btn-primary" asp-controller="Home" asp-action="AllOrders">All Orders</a>

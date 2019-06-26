@@ -1,0 +1,32 @@
+﻿@model Car
+
+<div class="bg-primary panel-body"><h3>Edit</h3></div><br />
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <label asp-for="Id"></label>
+        <input asp-for="Id" class="form-control" disabled/>
+    </div>
+    <div class="form-group">
+        <label asp-for="company"></label>
+        <input asp-for="company" class="form-control" />
+        <span asp-validation-for="company" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="model"></label>
+        <input asp-for="model" class="form-control" />
+        <span asp-validation-for="model" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="color"></label>
+        <input asp-for="color" class="form-control" />
+        <span asp-validation-for="color" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="price"></label>
+        <input asp-for="price" class="form-control" />
+        <span asp-validation-for="price" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save changes</button>
+    <a class="btn btn-danger" asp-action="Index">Cancel</a>
+</form>

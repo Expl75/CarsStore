@@ -1,0 +1,21 @@
+﻿@model ChangeRoleModel
+
+<div class="panel-body bg-primary"><h3>Change roles for user @Model.UserName</h3></div>
+<form asp-action="Edit" method="post">
+    <input hidden name="id" value="@Model.UserId" />
+    <div class="form-group">
+        <table class="table-bordered table table-condensed table-striped">
+            @foreach (var role in Model.AllRoles)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" name="roles" value="@role.Name"
+                               @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />
+                        <label style="width: 10rem">@role.Name</label>
+                    </td>
+                </tr>
+            }
+            </table>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
