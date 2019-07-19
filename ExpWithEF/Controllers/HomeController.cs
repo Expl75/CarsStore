@@ -132,7 +132,7 @@ namespace ExpWithEF.Controllers
                     editCar.color = car.color;
                     editCar.price = car.price;
 
-                    await context.SaveChangesAsync();
+                    context.SaveChanges();
                     return RedirectToAction("Index");
                 }
                 ModelState.AddModelError("", "Car not found");
