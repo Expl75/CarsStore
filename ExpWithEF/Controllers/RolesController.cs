@@ -15,8 +15,8 @@ namespace ExpWithEF.Controllers
     [Authorize(Roles = "Admin")]
     public class RolesController : Controller
     {
-        UserManager<User> userManager;
-        RoleManager<IdentityRole> roleManager;
+        private readonly UserManager<User> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
         public RolesController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
